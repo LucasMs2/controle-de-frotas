@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Motorista from './components/Motorista';
+import Motorista from './pages/Motorista';
 import logo from './assets/logo.png';
+import Onibus from './pages/Onibus';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/motoristas" element={<Motorista />} />
+              <Route path="/onibus" element={<Onibus />} />
             </Routes>
           </div>
         </main>
