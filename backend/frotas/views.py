@@ -10,22 +10,24 @@ class OnibusViewSet(viewsets.ModelViewSet):
     queryset = Onibus.objects.all()
     serializer_class = OnibusSerializer
 
-    # Sobrescrevendo o destroy para implementar a funcionalidade de não deletar, mas sim mudar o status para INATIVO
+    '''Inicialmente sobrescrevi o destroy para implementar a funcionalidade de não deletar, mas sim mudar o status para INATIVO
+    depois tive que editar essa função para adicionar um "force delete" para implementar também a exclusão permanente'''
     def destroy(self, request, *args, **kwargs):
-        onibus = self.get_object()
-        onibus.status = False
-        onibus.save()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        obj = self.get_object()
+        # Verifica se o parâmetro 'force=true' foi enviado na URL
+        force_delete = request.query_params.get('force') == 'true'
+
+        if force_delete:
+            obj.delete()  # Exclusão definitiva do Banco de Dados
+            return Response({"message": "Excluído permanentemente"}, status=status.HTTP_204_NO_CONTENT)
+        else:
+            obj.status = False  # Apenas desativa o objeto
+            obj.save()
+            return Response({"message": "Desativado com sucesso"}, status=status.HTTP_204_NO_CONTENT)
 
 class MotoristaViewSet(viewsets.ModelViewSet):
     queryset = Motorista.objects.all()
     serializer_class = MotoristaSerializer
-
-    def destroy(self, request, *args, **kwargs):
-        motorista = self.get_object()
-        motorista.status = False
-        motorista.save()
-        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class AlocacaoViewSet(viewsets.ModelViewSet):
     queryset = Alocacao.objects.all()
