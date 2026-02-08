@@ -1,6 +1,6 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from .models import Onibus, Motorista, Alocacao
+from .models.models import Onibus, Motorista, Alocacao
 from .serializers import OnibusSerializer, MotoristaSerializer, AlocacaoSerializer
 
 ''' Usei ModelViewSet para Onibus e Motorista porque o teste pede um CRUD padrão, e resolvi seguir esse caminho
@@ -30,7 +30,7 @@ class MotoristaViewSet(viewsets.ModelViewSet):
     serializer_class = MotoristaSerializer
 
 class AlocacaoViewSet(viewsets.ModelViewSet):
-    queryset = Alocacao.objects.all()
+    queryset = Alocacao.objects.all().order_by('-data_alocacao')
     serializer_class = AlocacaoSerializer
 
     # Implementando o requisito de filtrar alocações por data (GET /alocacoes?data=YYYY-MM-DD)

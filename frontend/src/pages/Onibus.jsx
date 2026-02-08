@@ -122,7 +122,7 @@ const Onibus = () => {
             <tr className="bg-gray-100 border-b-2 border-[#0071ce]">
               <th className="p-4 text-[#1a2b56] font-bold uppercase text-xs">Dados do Veículo</th>
               <th className="p-4 text-[#1a2b56] font-bold uppercase text-xs">Status</th>
-              <th className="p-4 text-[#1a2b56] font-bold uppercase text-xs">Ações</th>
+              <th className="p-4 text-[#1a2b56] font-bold uppercase text-xs">Mudar Status</th>
             </tr>
           </thead>
           <tbody>
