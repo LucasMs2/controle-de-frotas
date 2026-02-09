@@ -50,7 +50,7 @@ As seguintes regras foram implementadas no método `clean` do modelo de Alocaç�
 ---
 ## 🧠 Organização e Cronograma
 
--  Iniciei modelando os dados em modelo ER para iniciar o backend pelo banco de dados.
+-  Iniciei modelando os dados em modelo ER para iniciar o backend pelo banco de dados: [Diagrama ER do Projeto](./docs/Modelagem ER.png).
   - O próximo passo do backend foi implementar a lógica de validação utilizando o método clean() para garantir a funcionalidade das regras de negócio.
 - Após a validação, desenvolvi os CRUDs utilizando ViewSet para ficar com um visual mais limpo e com menos código, após isso configurei o CORS para garantir a comunicação entre as portas do backend e frontend.
 - Para o frontend resolvi utilizar React com Tailwind para uma estilização mais limpa e comecei fazendo uma Home simples que nao tem conteúdo em si, e contruí as paginas Motorista e Onibus primeiro para depois desenvolver a tela de alocações.
@@ -82,3 +82,11 @@ npm run dev
 - Backend (API): http://localhost:8000/api/
 
 **Caso tenha alguma aplicação rodando na máquina que utilize Vite, será alterada a porta 5173, mas o terminal sinaliza o endereço.**
+
+## 🧪 Testes Automatizados
+
+Para garantir que as regras de negócio de alocação (conflitos de motorista, veículo e status) sejam respeitadas, foram implementados testes unitários simples no Django.
+
+Para rodar utilize o comando:
+```bash
+docker-compose exec backend python manage.py test

@@ -11,6 +11,8 @@ class Onibus(models.Model):
     ano = models.IntegerField()
     status = models.BooleanField(default=True)
 
+    class Meta:
+        app_label = 'frotas'
     def __str__(self):
         return f"{self.modelo} ({self.placa})"
 

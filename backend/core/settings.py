@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gestao_frotas',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'NAME': 'frotas_db',
+        'USER': 'amparo',
+        'PASSWORD': 'amparo',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
